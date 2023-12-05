@@ -21,13 +21,6 @@ class LivreType extends AbstractType {
                     'placeholder' => "Titre de votre livre",
                 ]
             ])
-            // ->add('categories', EntityType::class, [
-            //     'class' => Categorie::class,
-            //     'label' => 'Catégories : ',
-            //     'choice_label' => 'Categorie',
-            //     'multiple' => true,
-            //     'required' => false,
-            // ])
             ->add('categories', EntityType::class, [
                 'class' => Categorie::class,
                 'label' => 'Catégories :',
