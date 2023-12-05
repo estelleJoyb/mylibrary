@@ -1,0 +1,12 @@
+# installation
+
+Pour créer la base de donnée chez soi : php bin/console doctrine:database:create
+
+# Démarrer le serveur
+
+Pour démarrer le serveur : symfony server:start
+
+# Choix architecture
+
+- Chaque auteur peut avoir un ou plusieurs livres mais un livre ne peut avoir qu'un auteur (on ne prend pas en compte les cas particuliers des recueils de poésie ou livres de cuisine).
+- Quand on supprime un auteur, on supprime ses oeuvres.
