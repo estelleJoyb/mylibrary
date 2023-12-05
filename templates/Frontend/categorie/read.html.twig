@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{%  block title %}
+	{{ parent() }}
+	|
+	{{ categorie.titre }}
+{% endblock %}
+{% block body %}
+	<a href="{{ path('app.categorie.index') }}" class="btn btn-secondary mt-4">Retour à la liste</a>
+	<h1 class="text-center">{{ categorie.titre }}</h1>
+	<p>Il y a
+		{{ categorie.livres|length }}
+		livres dans cette catégorie.</p>
+	{% if categorie.livres|length !=0 %}
+		<ul>
+			{% for livre in categorie.livres %}
+				<li>{{livre.titre}}
+					:
+					<a href="{{ path('app.livre.read', {id: livre.id})}}" class="btn btn-secondary">Voir</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+
+{% endblock %}

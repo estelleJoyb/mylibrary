@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Livres
+
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center">Livres</h1>
+	<table class="table mt-3">
+		<thead>
+			<th scope="col">Titre</th>
+			<th scope="col">Auteur</th>
+			<th scope="col">Voir</th>
+			<th scope="col">Modifier</th>
+			<th scope="col">Supprimer</th>
+		</thead>
+		<tbody>
+			{% for livre in livres %}
+				<tr>
+					<th scope="row">{{ livre.titre }}</th>
+					<th scope="row">{{ livre.auteur.prenom }}
+						{{ livre.auteur.nom }}</th>
+					<th scope="row">
+						<a class="btn  btn-secondary" href="{{ path('app.livre.read', {id: livre.id}) }}">Voir</a>
+					</th>
+					<th scope="row">
+						<a class="btn  btn-secondary" href="{{ path('app.livre.edit', {id: livre.id}) }}">Modifier</a>
+					</th>
+					<th scope="row">
+						{% include "Frontend/livre/_deleteForm.html.twig" %}
+					</th>
+				</tr>
+			{% endfor %}
+		</tbody>
+
+	</table>
+	<a href="{{ path('app.livre.new') }}" class="btn  btn-secondary">Créer un nouveau livre</a>
+{% endblock %}

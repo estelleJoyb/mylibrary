@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{%  block title %}
+	{{ parent() }}
+	|
+	{{ auteur.prenom }}
+	{{ auteur.nom }}
+{% endblock %}
+{% block body %}
+	<a href="{{ path('app.auteur.index') }}" class="btn btn-secondary mt-4">Retour à la liste</a>
+	<h1 class="text-center">{{ auteur.prenom }}
+		{{ auteur.nom }}</h1>
+	<p>Cet auteur a publié
+		{{ auteur.livres|length }}
+		livres.</p>
+	{% if auteur.livres|length !=0 %}
+		<ul>
+			{% for livre in auteur.livres %}
+				<li>{{livre.titre}}
+					:
+					<a href="{{ path('app.livre.read', {id: livre.id}) }}" class="btn btn-secondary">Voir</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+
+{% endblock %}

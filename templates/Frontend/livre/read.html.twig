@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{%  block title %}
+	{{ parent() }}
+	|
+	{{ livre.titre }}
+{% endblock %}
+{% block body %}
+	<a href="{{ path('app.livre.index') }}" class="btn btn-secondary mt-4">Retour à la liste</a>
+	<h1 class="text-center">{{ livre.titre }}</h1>
+	<p>Ce livre est écrit par
+		{{ livre.auteur.prenom }}
+		{{ livre.auteur.nom }}</p>
+	<a href="{{ path('app.auteur.read', {id: livre.auteur.id} )}}" class="btn btn-secondary">Voir la page Auteur</a>
+	<p>Ce livre fait partie de
+		{{ livre.categories|length }}
+		catégories.</p>
+	{% if livre.categories|length ==0 %}
+		<ul>
+			{% for categorie in livre.categories %}
+				<li>categorie.Categorie :
+					<a href="{{ path('app.categorie.read', {id: categorie.id})}}" class="btn btn-secondary">Voir</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Nouvel Auteur
+{% endblock %}
+
+{% block body %}
+	<a href="{{ path('app.auteur.index') }}" role="button" class="btn btn-primary m-3">Retour à la liste</a>
+	<h1 class='text-center'>Création nouvel auteur</h1>
+
+	{{ include('frontend/auteur/_form.html.twig') }}
+
+
+{% endblock %}

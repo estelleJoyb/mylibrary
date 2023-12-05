@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Catégories
+
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center">Catégories</h1>
+	<table class="table mt-3">
+		<thead>
+			<th scope="col">Titre</th>
+			<th scope="col">Voir</th>
+			<th scope="col">Modifier</th>
+			<th scope="col">Supprimer</th>
+		</thead>
+		<tbody>
+			{% for categorie in categories %}
+				<tr>
+					<th scope="row">{{ categorie.titre }}</th>
+					<th scope="row">
+						<a class="btn  btn-secondary" href="{{ path('app.categorie.read', {id: categorie.id}) }}">Voir</a>
+					</th>
+					<th scope="row">
+						<a class="btn  btn-secondary" href="{{ path('app.categorie.edit', {id: categorie.id}) }}">Modifier</a>
+					</th>
+					<th scope="row">
+						{% include "Frontend/categorie/_deleteForm.html.twig" %}
+					</th>
+				</tr>
+			{% endfor %}
+		</tbody>
+
+	</table>
+	<a href="{{ path('app.categorie.new') }}" class="btn  btn-secondary">Créer une nouvelle catégorie</a>
+{% endblock %}

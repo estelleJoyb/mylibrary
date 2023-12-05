@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Nouveau livre
+{% endblock %}
+
+{% block body %}
+	<a href="{{ path('app.livre.index') }}" role="button" class="btn btn-primary m-3">Retour à la liste</a>
+	<h1 class='text-center'>Création nouveau livre</h1>
+
+	{{ include('frontend/livre/_form.html.twig') }}
+
+
+{% endblock %}

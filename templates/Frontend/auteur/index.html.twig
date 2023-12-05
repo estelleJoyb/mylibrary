@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Auteurs
+
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center">Auteurs</h1>
+	<table class="table mt-3">
+		<thead>
+			<th scope="col">Nom</th>
+			<th scope="col">Prénom</th>
+			<th scope="col">Voir</th>
+			<th scope="col">Modifier</th>
+			<th scope="col">Supprimer</th>
+		</thead>
+		<tbody>
+			{% for auteur in auteurs %}
+				<tr>
+					<th scope="row">{{ auteur.nom }}</th>
+					<th scope="row">{{ auteur.prenom }}</th>
+					<th scope="row">
+						<a class="btn  btn-secondary" href="{{ path('app.auteur.read', {id: auteur.id}) }}">Voir</a>
+					</th>
+					<th scope="row">
+						<a class="btn  btn-secondary" href="{{ path('app.auteur.edit', {id: auteur.id}) }}">Modifier</a>
+					</th>
+					<th scope="row">
+						{% include "Frontend/auteur/_deleteForm.html.twig" %}
+					</th>
+				</tr>
+			{% endfor %}
+		</tbody>
+
+	</table>
+	<a href="{{ path('app.auteur.new') }}" class="btn  btn-secondary">Créer un nouvel auteur</a>
+{% endblock %}
